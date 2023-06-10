@@ -23,6 +23,18 @@ public struct Command: Identifiable, Equatable, Codable {
     public var answer: String
     public var value: String
     public var type: CommandType
+    
+    init(id: UUID = UUID(), displayName: String, body: String, time: Date = Date(), question_id: String, question: String, answer: String, value: String, type: CommandType) {
+        self.id = id
+        self.displayName = displayName
+        self.body = body
+        self.time = time
+        self.question_id = question_id
+        self.question = question
+        self.answer = answer
+        self.value = value
+        self.type = type
+    }
 
   var isUser: Bool {
     return displayName == UIDevice.current.name
