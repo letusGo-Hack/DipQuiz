@@ -19,17 +19,20 @@ struct HomeView: View {
             joinButton
                 .frame(height: 64)
                 .padding(.horizontal, 40)
+            sendButton
+                .frame(height: 64)
+                .padding(.horizontal, 40)
             Spacer()
         }.onAppear(){
             connectionManager.displayname("c1")
-            if connectionManager.onFinsh {
-                print("")
-            }
+//            if connectionManager.onFinsh {
+//                print("")
+//            }
         }
         .onReceive(connectionManager.$connectedToChat) { isConnected in
-            if isConnected {
-                appState.switchView = .pending(connectionManager)
-            }
+//            if isConnected {
+//                appState.switchView = .pending(connectionManager)
+//            }
         }
         .background(Color.white)
     }
@@ -48,5 +51,20 @@ struct HomeView: View {
     private func joinButtonTapped() {
         print("Join Button Tapped")
         ConnectionManager.shared.join()
+    }
+    
+    private var sendButton: some View {
+        Button(action: sendButtonTapped) {
+            Text("sendTest")
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.yellow)
+                .cornerRadius(8)
+        }
+    }
+    private func sendButtonTapped() {
+        print("Join Button Tapped")
+        ConnectionManager.shared.send(_question_id: "ID112", _question: "코리리코는길다", _answer: "아니다/맞다", _value: "맞다", _type: .INT)
     }
 }

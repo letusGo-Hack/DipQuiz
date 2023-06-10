@@ -32,19 +32,6 @@ struct ContentView: View {
                     .font(.system(size: 30, weight: .medium))
             }
             
-            ForEach(modelData.messages) { message in
-                Group{}
-            }
-
-//            ForEach(modelData.messages) { message in
-//              MessageBodyView(message: message)
-//                .onAppear {
-//                  if message == chatConnectionManager.messages.last {
-//                    reader.scrollTo(message.id)
-//                  }
-//                }
-//            }
-            
         }.onAppear(){
             //호스트이름 고정
             ConnectionManager.shared.displayname("Dip Quiz Host")

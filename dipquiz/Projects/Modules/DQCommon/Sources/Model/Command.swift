@@ -37,10 +37,10 @@ public struct Command: Identifiable, Equatable, Codable {
         self.value = value
         self.type = type
     }
-
-  var isUser: Bool {
-    return displayName == UIDevice.current.name
-  }
+    
+    public var isUser: Bool {
+        return displayName == UIDevice.current.name
+    }
 }
 
 public struct HostItem: Identifiable, Equatable, Codable {

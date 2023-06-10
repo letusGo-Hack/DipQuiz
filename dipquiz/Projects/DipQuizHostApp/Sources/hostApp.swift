@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import DQCommon
 
 @main
 struct hostApp: App {
-    
+    @StateObject private var modelData = ConnectionManager.shared
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(modelData)
         }
     }
 }
