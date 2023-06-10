@@ -18,13 +18,20 @@ public struct Command: Identifiable, Equatable, Codable {
     public let body: String
     public var time = Date()
     
-    public var question_id: String
-    public var question: String
-    public var answer: String
-    public var value: String
+    public var question_id: String = ""
+    public var question: String = ""
+    public var answer: String = ""
+    public var value: String = ""
     public var ranking: String = "-1"
     public var total_member: String = "0"
-    public var type: CommandType
+    public var type: CommandType = .NONE
+    
+    init(id: UUID = UUID(), displayName: String, body: String, time: Date = Date()){
+        self.id = id
+        self.displayName = displayName
+        self.body = body
+        self.time = time
+    }
     
     init(id: UUID = UUID(), displayName: String, body: String, time: Date = Date(), question_id: String, question: String, answer: String, value: String, type: CommandType) {
         self.id = id

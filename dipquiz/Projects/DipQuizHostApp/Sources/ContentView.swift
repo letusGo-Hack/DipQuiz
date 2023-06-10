@@ -26,7 +26,8 @@ struct ContentView: View {
             }
             Spacer().frame(height: 20)
             NavigationLink {
-                StartingView()
+//                StartingView()
+                ChatView()
             } label: {
                 Label("시작", systemImage: "flag.checkered")
                     .font(.system(size: 30, weight: .medium))
@@ -34,8 +35,8 @@ struct ContentView: View {
             
         }.onAppear(){
             //호스트이름 고정
-            ConnectionManager.shared.displayname("Dip Quiz Host")
-            ConnectionManager.shared.host()
+//            ConnectionManager.shared.displayname("Dip Quiz Host")
+//            ConnectionManager.shared.host()
         }
     }
     
