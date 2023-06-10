@@ -21,14 +21,14 @@ final class QuizView: UIView {
         super.init(frame: .zero)
         setupViews()
         define()
-//        configure(question: "Hello", answers: [
-//            "world1",
-//            "world2",
-//            "world3",
-//            "world4",
-//            "world5",
-//        ])
-        configureOX(question: "HelloHelloHelloHelloHello")
+        configure(question: "Hello", answers:  [
+            "world1",
+            "world2",
+            "world3",
+            "world4",
+            "world5",
+        ].joined(separator: ""))
+//        configureOX(question: "HelloHelloHelloHelloHello")
     }
     
     required init?(coder: NSCoder) {
@@ -36,42 +36,22 @@ final class QuizView: UIView {
     }
     
     weak var listener: QuizViewListener?
-    func configure(question: String, answers: [String]) {
+    func configure(question: String, answers: String) {
         questionTitleLabel.text = question
-        generateButton(answers: answers)
+        answerLabel.text = answers
     }
     
     func configureOX(question: String) {
-        answerStackView.isHidden = true
+        answerLabel.isHidden = true
         answerOXStackView.isHidden = false
     }
     
     private let questionTitleLabel = UILabel()
-    private let answerStackView = UIStackView()
+    private let answerLabel = UILabel()
     private let answerOXStackView = UIStackView()
     private var answerButtons = [UIButton]()
     private let answerOButton = UIButton(type: .system)
     private let answerXButton = UIButton(type: .system)
-    
-    private func generateButton(answers: [String]) {
-        answerButtons.forEach {
-            answerStackView.removeArrangedSubview($0)
-            $0.removeFromSuperview()
-        }
-        answerButtons = []
-        answers.forEach {
-            let button = UIButton(type: .system)
-            button.setTitle($0, for: .normal)
-            button.backgroundColor = .lightGray
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.layer.cornerRadius = 26
-            button.layer.masksToBounds = true
-            button.addTarget(self, action: #selector(answerButtonTapped), for: .touchUpInside)
-            answerButtons.append(button)
-            answerStackView.addArrangedSubview(button)
-            button.heightAnchor.constraint(equalToConstant: 52).isActive = true
-        }
-    }
     
     @objc
     private func answerButtonTapped(button: UIButton) {
@@ -87,10 +67,9 @@ private extension QuizView {
         questionTitleLabel.text = "현재 다른 참여자를 기다리는 중입니다."
         questionTitleLabel.textColor = .black
         questionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        answerStackView.axis = .vertical
-        answerStackView.spacing = 12
-        answerStackView.translatesAutoresizingMaskIntoConstraints = false
+        answerLabel.translatesAutoresizingMaskIntoConstraints = false
+        answerLabel.textColor = .black
+        answerLabel.numberOfLines = 0
         
         answerOXStackView.axis = .horizontal
         answerOXStackView.spacing = 12
@@ -111,7 +90,7 @@ private extension QuizView {
         answerXButton.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(questionTitleLabel)
-        addSubview(answerStackView)
+        addSubview(answerLabel)
         addSubview(answerOXStackView)
         answerOXStackView.addArrangedSubview(answerOButton)
         answerOXStackView.addArrangedSubview(answerXButton)
@@ -121,9 +100,9 @@ private extension QuizView {
         NSLayoutConstraint.activate([
             questionTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
             questionTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            answerStackView.topAnchor.constraint(equalTo: questionTitleLabel.bottomAnchor, constant: 32),
-            answerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            answerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            answerLabel.topAnchor.constraint(equalTo: questionTitleLabel.bottomAnchor, constant: 32),
+            answerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            answerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
             answerOXStackView.topAnchor.constraint(equalTo: questionTitleLabel.bottomAnchor, constant: 32),
             answerOXStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             answerOButton.widthAnchor.constraint(equalToConstant: 100),
