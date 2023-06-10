@@ -29,12 +29,19 @@ public class ConnectionManager: NSObject, ObservableObject {
         myPeerId = MCPeerID(displayName: name)
     }
     
-    public func send(_ message: String) {
-        let chatMessage = Command(displayName: myPeerId.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
+    public func send(_question_id: String,
+                     _question: String,
+                     _answer: String,
+                     _value: String,
+                     _type: CommandType)
+    {
+        let chatMessage = Command(displayName: myPeerId.displayName, body: "", question_id: _question_id, question: _question, answer: _answer, value: _value, type:_type)
         messages.append(chatMessage)
         guard
             let session = session,
-            let data = message.data(using: .utf8),
+            let data: Data = try? JSONEncoder().encode(chatMessage),
+//            let data = newData(using: .utf8),
+                
             !session.connectedPeers.isEmpty
         else { return }
         
@@ -104,8 +111,9 @@ extension ConnectionManager: MCNearbyServiceAdvertiserDelegate {
 
 extension ConnectionManager: MCSessionDelegate {
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        guard let message = String(data: data, encoding: .utf8) else { return }
-        let chatMessage = Command(displayName: peerID.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
+//        guard let message = String(data: data, encoding: .utf8) else { return }
+        guard let chatMessage: Command = try? JSONDecoder().decode(Command.self, from: data) else { return }
+//        let chatMessage = Command(displayName: peerID.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
         DispatchQueue.main.async {
             self.messages.append(chatMessage)
         }
