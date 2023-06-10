@@ -15,7 +15,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("\(UserDefaultsManager.shared.loadText()) 님 반갑습니다!")
+//            Text("\(UserDefaultsManager.shared.loadText()) 님 반갑습니다!")
             joinButton
                 .frame(height: 64)
                 .padding(.horizontal, 40)
