@@ -11,13 +11,12 @@ import DQCommon
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
     @ObservedObject private var connectionManager = ConnectionManager.shared
-    @State private var nickName = UserDefaultsManager.shared.loadText()
 
     var body: some View {
         VStack {
             Spacer()
 
-            Text("\(nickName) 님 반갑습니다!")
+            Text("\(UserDefaultsManager.shared.loadText()) 님 반갑습니다!")
 
             joinButton
                 .frame(height: 64)
@@ -36,8 +35,13 @@ struct HomeView: View {
         .onChange(of: self.connectionManager.connectedToChat) { oldValue, newValue in
             print("⌘")
         }
+        .onAppear {
+            if connectionManager.onFinsh {
+                print("")
+            }
+        }
     }
-    
+
     private var joinButton: some View {
         Button(action: joinButtonTapped) {
             Text("Join")
@@ -48,7 +52,7 @@ struct HomeView: View {
                 .cornerRadius(8)
         }
     }
-    
+
     private func joinButtonTapped() {
         print("Join Button Tapped")
         ConnectionManager.shared.join()
