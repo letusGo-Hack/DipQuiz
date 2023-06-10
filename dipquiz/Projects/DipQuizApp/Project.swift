@@ -5,7 +5,7 @@ import UtilityPlugin
 let appName: String = "DipQuiz"
 
 let infoPlist: [String: InfoPlist.Value] = [
-    "CFBundleDisplayName": "DipQuizHost",
+    "CFBundleDisplayName": "DipQuiz",
     "UIMainStoryboardFile": "",
     "UILaunchStoryboardName": "LaunchScreen"
 ]

@@ -8,31 +8,33 @@
 import SwiftUI
 
 struct QuizCardView: View {
+    let question: String
+    let answer: String
+    
+    init(question: String, answer: String) {
+        self.question = question
+        self.answer = answer
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("카드 뷰")
-                .font(.title2)
-                .fontWeight(.bold)
-            
-            Spacer().frame(height: 10)
-            
-            Text("문제")
-                .font(.title3)
+            Text(question)
+                .font(.headline)
                 .fontWeight(.semibold)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             
-            Text("Swift 5.9에서 제네릭 시스템이 어떻게 개선되었습니까?")
-            
-            Spacer().frame(height: 10)
-            
-            Text("정답")
-                .font(.title3)
+            Text("정답: \(answer)")
+                .font(.subheadline)
+                .foregroundStyle(Color.accentColor)
                 .fontWeight(.semibold)
-            Text("이제 인수 길이에 대한 추상화를 지원합니다.")
         }
     }
 }
 
 #Preview {
-    QuizCardView()
-        .frame(width: 300)
+    QuizCardView(
+        question: "Swift 5.9에서 제네릭 시스템이 어떻게 개선되었습니까?",
+        answer: "이제 인수 길이에 대한 추상화를 지원합니다."
+    )
+    .frame(width: 300)
 }
