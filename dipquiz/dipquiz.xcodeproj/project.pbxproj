@@ -245,12 +245,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				3E5592C52A340DBA00BD2CF7 /* HomeView.swift in Sources */,
-=======
 				2DFF32362A340B9000EDDDBA /* ConnectionManager.swift in Sources */,
 				2DFF32372A340B9400EDDDBA /* Command.swift in Sources */,
->>>>>>> Dev
 				2DFF320A2A34083000EDDDBA /* ContentView.swift in Sources */,
 				2DFF32082A34083000EDDDBA /* dipquizApp.swift in Sources */,
 			);
