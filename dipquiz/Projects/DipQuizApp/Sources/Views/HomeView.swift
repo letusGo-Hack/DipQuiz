@@ -15,6 +15,8 @@ struct HomeView: View {
                 .frame(height: 64)
                 .padding(.horizontal, 40)
             Spacer()
+        }.onAppear(){
+            ConnectionManager.shared.displayname("c1")//클라이언트 이름
         }
         .background(Color.white)
     }
@@ -32,5 +34,6 @@ struct HomeView: View {
     
     private func joinButtonTapped() {
         print("Join Button Tapped")
+        ConnectionManager.shared.join()
     }
 }

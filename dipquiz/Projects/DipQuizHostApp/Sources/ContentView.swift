@@ -35,7 +35,17 @@ struct ContentView: View {
                 }
             }
             Text("Select an item")
+        }.onAppear(){
+            //호스트이름 고정
+            ConnectionManager.shared.displayname("Dip Quiz Host")
         }
+        
+        Button(
+          action: {
+              ConnectionManager.shared.host()
+          }, label: {
+            Label("send", systemImage: "arrow.up.right.and.arrow.down.left.rectangle")
+          })
     }
 
     private func addItem() {

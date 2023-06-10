@@ -2,17 +2,31 @@ import Foundation
 import MultipeerConnectivity
 
 class ConnectionManager: NSObject, ObservableObject {
+    
   private static let service = "jobmanager-chat"
-
+    
   @Published var messages: [Command] = []
   @Published var peers: [MCPeerID] = []
   @Published var connectedToChat = false
-
-  let myPeerId = MCPeerID(displayName: UIDevice.current.name)
+    
+    var myPeerId = MCPeerID(displayName: UIDevice.current.name)
   private var advertiserAssistant: MCNearbyServiceAdvertiser?
   private var session: MCSession?
   private var isHosting = false
-
+    
+    //싱클톡 추가.
+    static let shared = ConnectionManager()
+    private override init() {
+        super.init()
+    }
+    var sharedInstance: ConnectionManager {
+        return ConnectionManager.shared
+    }
+    
+    func displayname(_ name: String){
+        myPeerId = MCPeerID(displayName: name)
+    }
+    
   func send(_ message: String) {
     let chatMessage = Command(displayName: myPeerId.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
     messages.append(chatMessage)
