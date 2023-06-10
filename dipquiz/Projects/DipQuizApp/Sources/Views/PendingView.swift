@@ -27,7 +27,7 @@ struct PendingView: View {
                 case .INT:
                     appState.switchView = .quiz
                 default:
-                    appState.switchView = .pending
+                    appState.switchView = .pending(connectionManager)
                 }
             }
         }
