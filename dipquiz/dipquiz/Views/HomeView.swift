@@ -34,7 +34,3 @@ struct HomeView: View {
         print("Join Button Tapped")
     }
 }
-
-#Preview {
-    HomeView()
-}
