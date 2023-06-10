@@ -4,6 +4,7 @@ import ProjectDescriptionHelpers
 let workspace = Workspace(
     name: "Application",
     projects: [
+        "Projects/DipQuizClientApp",
         "Projects/DipQuizApp",
         "Projects/DipQuizHostApp"
     ],

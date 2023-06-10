@@ -9,9 +9,14 @@ import SwiftUI
 
 struct QuizView: View {
     @EnvironmentObject var appState: AppState
-    @State private var question: String = "문제"
-    @State private var answers: [String] = []
-    
+    @State private var question: String = "[문제] 여기에 문제에 대한 텍스트가 표시됩니다."
+    @State private var answers: [String] = [
+        "문제 답변 1",
+        "문제 답변 2",
+        "문제 답변 3",
+        "문제 답변 4",
+        "문제 답변 5",
+    ]
     
     var body: some View {
         VStack {
@@ -20,7 +25,7 @@ struct QuizView: View {
                 .padding()
             
             ScrollView {
-                LazyVStack(spacing: 16) {
+                kVStack(spacing: 16) {
                     ForEach(answers, id: \.self) { answer in
                         QuizAnswerView(answer: answer)
                     }
@@ -28,10 +33,16 @@ struct QuizView: View {
                 .padding(.horizontal, 32)
             }
         }
+        
     }
     
-    func configure(question: String, answers: [String]) {
+    func configure(question: String, answers: [String]) -> Self {
         self.question = question
         self.answers = answers
+        return self
     }
+}
+
+#Preview {
+    QuizView()
 }

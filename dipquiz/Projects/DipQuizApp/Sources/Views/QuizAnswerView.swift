@@ -11,13 +11,21 @@ struct QuizAnswerView: View {
     var answer: String
     
     var body: some View {
-        VStack {
-            Text(answer)
-                .font(.system(size: 16))
-                .foregroundColor(.black)
-                .padding()
-                .background(Color.gray)
-                .cornerRadius(24)
+        GeometryReader { geometry in
+            VStack {
+                Text(answer)
+                    .font(.system(size: 16))
+                    .foregroundColor(.black)
+                    .padding()
+                    .background(Color.gray)
+                    .cornerRadius(24)
+                    
+            }
         }
+        
     }
+}
+
+#Preview {
+    QuizAnswerView(answer: "테스트")
 }
