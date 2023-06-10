@@ -16,6 +16,7 @@
 		2DFF32202A3408C200EDDDBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DFF321F2A3408C200EDDDBA /* Assets.xcassets */; };
 		2DFF32232A3408C200EDDDBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DFF32222A3408C200EDDDBA /* Preview Assets.xcassets */; };
 		2DFF32252A3408C200EDDDBA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32242A3408C200EDDDBA /* Item.swift */; };
+		3E5592C52A340DBA00BD2CF7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5592C42A340DBA00BD2CF7 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		2DFF321F2A3408C200EDDDBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DFF32222A3408C200EDDDBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2DFF32242A3408C200EDDDBA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		3E5592C42A340DBA00BD2CF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				2DFF32092A34083000EDDDBA /* ContentView.swift */,
 				2DFF320B2A34083100EDDDBA /* Assets.xcassets */,
 				2DFF320D2A34083100EDDDBA /* Preview Content */,
+				3E5592C42A340DBA00BD2CF7 /* HomeView.swift */,
 			);
 			path = dipquiz;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E5592C52A340DBA00BD2CF7 /* HomeView.swift in Sources */,
 				2DFF320A2A34083000EDDDBA /* ContentView.swift in Sources */,
 				2DFF32082A34083000EDDDBA /* dipquizApp.swift in Sources */,
 			);
@@ -352,6 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dipquiz/Preview Content\"";
+				DEVELOPMENT_TEAM = 97C96KP84G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -380,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dipquiz/Preview Content\"";
+				DEVELOPMENT_TEAM = 97C96KP84G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -408,6 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"host/Preview Content\"";
+				DEVELOPMENT_TEAM = 97C96KP84G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -436,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"host/Preview Content\"";
+				DEVELOPMENT_TEAM = 97C96KP84G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
