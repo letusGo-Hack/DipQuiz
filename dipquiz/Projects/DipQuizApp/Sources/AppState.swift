@@ -10,11 +10,12 @@ import Foundation
 import DQCommon
 class AppState: ObservableObject {
     enum CurrentView {
+        case join
         case home
         case pending(ConnectionManager)
         case quiz
         case result
     }
     
-    @Published var switchView = CurrentView.home
+    @Published var switchView = CurrentView.join
 }

@@ -16,6 +16,9 @@ struct ContentView: View {
         NavigationView {
             Group {
                 switch (appState.switchView) {
+                case .join:
+                    JoinView()
+                        .environmentObject(appState)
                 case .home:
                     HomeView()
                         .environmentObject(appState)
