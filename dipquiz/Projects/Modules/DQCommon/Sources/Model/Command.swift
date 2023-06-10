@@ -22,6 +22,8 @@ public struct Command: Identifiable, Equatable, Codable {
     public var question: String
     public var answer: String
     public var value: String
+    public var ranking: String = "-1"
+    public var total_member: String = "0"
     public var type: CommandType
     
     init(id: UUID = UUID(), displayName: String, body: String, time: Date = Date(), question_id: String, question: String, answer: String, value: String, type: CommandType) {

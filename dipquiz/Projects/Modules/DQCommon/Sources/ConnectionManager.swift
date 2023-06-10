@@ -111,8 +111,9 @@ extension ConnectionManager: MCNearbyServiceAdvertiserDelegate {
 
 extension ConnectionManager: MCSessionDelegate {
     public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        guard let message = String(data: data, encoding: .utf8) else { return }
-        let chatMessage = Command(displayName: peerID.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
+//        guard let message = String(data: data, encoding: .utf8) else { return }
+        guard let chatMessage: Command = try? JSONDecoder().decode(Command.self, from: data) else { return }
+//        let chatMessage = Command(displayName: peerID.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
         DispatchQueue.main.async {
             self.messages.append(chatMessage)
         }
