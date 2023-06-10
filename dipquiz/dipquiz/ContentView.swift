@@ -12,12 +12,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Image(systemName: "applescript")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(.accentColor)
-                .frame(width: 150, height: 150)
-            Text("Hello, Apple Script!").font(.largeTitle)
+            HomeView()
         }
         .padding()
         .task {
