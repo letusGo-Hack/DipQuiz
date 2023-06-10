@@ -44,25 +44,17 @@ struct AddQuizView: View {
                 }
                 
                 Group {
-                    Text("문제")
-                    TextField("문제를 입력해주세요", text: $quizContent)
-                        .background(Color(uiColor: .secondarySystemBackground))
-                        .textFieldStyle(.roundedBorder)
+                    Text("문제를 입력해주세요")
+                        .font(.title3)
+                        .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+                    TextEditor(text: $quizContent)
+                        .frame(height: 300)
+                        .cornerRadius(8)
                 }
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                 
                 switch selectedQuizType {
                 case .TYPE_SELECT:
-                    Group {
-                        Text("정답")
-                        Spacer().frame(height: 10)
-                        TextEditor(text: $answer)
-                            .cornerRadius(8)
-                            .frame(height: 300)
-                    }
-                    .textFieldStyle(.roundedBorder)
-                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-                case .TYPE_ETC:
                     Group {
                         Text("정답")
                         Spacer().frame(height: 10)
