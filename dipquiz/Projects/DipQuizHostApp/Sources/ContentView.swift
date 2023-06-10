@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import DQCommon
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -27,6 +28,10 @@ struct ContentView: View {
                 Label("시작", systemImage: "flag.checkered")
                     .font(.system(size: 30, weight: .medium))
             }
+        }.onAppear(){
+            //호스트이름 고정
+            ConnectionManager.shared.displayname("Dip Quiz Host")
+            ConnectionManager.shared.host()
         }
     }
 }

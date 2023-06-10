@@ -9,6 +9,8 @@ import SwiftUI
 import DQCommon
 
 struct HomeView: View {
+    @EnvironmentObject var modelData: ConnectionManager
+    
     var body: some View {
         VStack {
             Spacer()
@@ -18,8 +20,14 @@ struct HomeView: View {
             Spacer()
         }.onAppear(){
             ConnectionManager.shared.displayname("c1")//클라이언트 이름
+
         }
         .background(Color.white)
+        .onAppear {
+            if modelData.onFinsh {
+                print("")
+            }
+        }
     }
     
     private var joinButton: some View {
