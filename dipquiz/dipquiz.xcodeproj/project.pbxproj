@@ -20,6 +20,9 @@
 		2DFF32352A340B8D00EDDDBA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32332A340B8D00EDDDBA /* Command.swift */; };
 		2DFF32362A340B9000EDDDBA /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32312A340B8D00EDDDBA /* ConnectionManager.swift */; };
 		2DFF32372A340B9400EDDDBA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32332A340B8D00EDDDBA /* Command.swift */; };
+		605E625F2A3411350010FA2D /* ManagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E625E2A3411350010FA2D /* ManagingView.swift */; };
+		605E62612A34113D0010FA2D /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E62602A34113D0010FA2D /* StartingView.swift */; };
+		605E62632A3414E20010FA2D /* QuizCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605E62622A3414E20010FA2D /* QuizCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		2DFF32242A3408C200EDDDBA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2DFF32312A340B8D00EDDDBA /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		2DFF32332A340B8D00EDDDBA /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		605E625E2A3411350010FA2D /* ManagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagingView.swift; sourceTree = "<group>"; };
+		605E62602A34113D0010FA2D /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
+		605E62622A3414E20010FA2D /* QuizCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 		2DFF321A2A3408C100EDDDBA /* host */ = {
 			isa = PBXGroup;
 			children = (
+				605E625D2A3411240010FA2D /* Views */,
 				2DFF322C2A340ACE00EDDDBA /* share */,
 				2DFF321B2A3408C100EDDDBA /* hostApp.swift */,
 				2DFF321D2A3408C100EDDDBA /* ContentView.swift */,
@@ -137,6 +144,16 @@
 				2DFF32332A340B8D00EDDDBA /* Command.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		605E625D2A3411240010FA2D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				605E625E2A3411350010FA2D /* ManagingView.swift */,
+				605E62602A34113D0010FA2D /* StartingView.swift */,
+				605E62622A3414E20010FA2D /* QuizCardView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				605E62632A3414E20010FA2D /* QuizCardView.swift in Sources */,
+				605E625F2A3411350010FA2D /* ManagingView.swift in Sources */,
 				2DFF321E2A3408C100EDDDBA /* ContentView.swift in Sources */,
 				2DFF32342A340B8D00EDDDBA /* ConnectionManager.swift in Sources */,
+				605E62612A34113D0010FA2D /* StartingView.swift in Sources */,
 				2DFF32252A3408C200EDDDBA /* Item.swift in Sources */,
 				2DFF32352A340B8D00EDDDBA /* Command.swift in Sources */,
 				2DFF321C2A3408C100EDDDBA /* hostApp.swift in Sources */,

@@ -13,42 +13,19 @@ struct ContentView: View {
     @Query private var items: [Item]
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        NavigationStack {
+            NavigationLink {
+                ManagingView()
+            } label: {
+                Label("관리", systemImage: "square.stack.3d.up.fill")
+                    .font(.system(size: 30, weight: .medium))
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+            Spacer().frame(height: 20)
+            NavigationLink {
+                StartingView()
+            } label: {
+                Label("시작", systemImage: "flag.checkered")
+                    .font(.system(size: 30, weight: .medium))
             }
         }
     }
