@@ -17,6 +17,11 @@
 		2DFF32232A3408C200EDDDBA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DFF32222A3408C200EDDDBA /* Preview Assets.xcassets */; };
 		2DFF32252A3408C200EDDDBA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32242A3408C200EDDDBA /* Item.swift */; };
 		3E5592C52A340DBA00BD2CF7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5592C42A340DBA00BD2CF7 /* HomeView.swift */; };
+		2DFF32342A340B8D00EDDDBA /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32312A340B8D00EDDDBA /* ConnectionManager.swift */; };
+		2DFF32352A340B8D00EDDDBA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32332A340B8D00EDDDBA /* Command.swift */; };
+		2DFF32362A340B9000EDDDBA /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32312A340B8D00EDDDBA /* ConnectionManager.swift */; };
+		2DFF32372A340B9400EDDDBA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32332A340B8D00EDDDBA /* Command.swift */; };
+		2DFF32392A340E5B00EDDDBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF32382A340E5B00EDDDBA /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,9 @@
 		2DFF32222A3408C200EDDDBA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2DFF32242A3408C200EDDDBA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3E5592C42A340DBA00BD2CF7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2DFF32312A340B8D00EDDDBA /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		2DFF32332A340B8D00EDDDBA /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		2DFF32382A340E5B00EDDDBA /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,7 @@
 		2DFF321A2A3408C100EDDDBA /* host */ = {
 			isa = PBXGroup;
 			children = (
+				2DFF322C2A340ACE00EDDDBA /* share */,
 				2DFF321B2A3408C100EDDDBA /* hostApp.swift */,
 				2DFF321D2A3408C100EDDDBA /* ContentView.swift */,
 				2DFF321F2A3408C200EDDDBA /* Assets.xcassets */,
@@ -108,6 +117,32 @@
 				2DFF32222A3408C200EDDDBA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2DFF322C2A340ACE00EDDDBA /* share */ = {
+			isa = PBXGroup;
+			children = (
+				2DFF32382A340E5B00EDDDBA /* SceneDelegate.swift */,
+				2DFF32302A340B8D00EDDDBA /* Connection Managers */,
+				2DFF32322A340B8D00EDDDBA /* Models */,
+			);
+			path = share;
+			sourceTree = "<group>";
+		};
+		2DFF32302A340B8D00EDDDBA /* Connection Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2DFF32312A340B8D00EDDDBA /* ConnectionManager.swift */,
+			);
+			path = "Connection Managers";
+			sourceTree = "<group>";
+		};
+		2DFF32322A340B8D00EDDDBA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DFF32332A340B8D00EDDDBA /* Command.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +245,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				3E5592C52A340DBA00BD2CF7 /* HomeView.swift in Sources */,
+=======
+				2DFF32362A340B9000EDDDBA /* ConnectionManager.swift in Sources */,
+				2DFF32372A340B9400EDDDBA /* Command.swift in Sources */,
+>>>>>>> Dev
 				2DFF320A2A34083000EDDDBA /* ContentView.swift in Sources */,
 				2DFF32082A34083000EDDDBA /* dipquizApp.swift in Sources */,
 			);
@@ -221,8 +261,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DFF321E2A3408C100EDDDBA /* ContentView.swift in Sources */,
+				2DFF32342A340B8D00EDDDBA /* ConnectionManager.swift in Sources */,
 				2DFF32252A3408C200EDDDBA /* Item.swift in Sources */,
+				2DFF32352A340B8D00EDDDBA /* Command.swift in Sources */,
 				2DFF321C2A3408C100EDDDBA /* hostApp.swift in Sources */,
+				2DFF32392A340E5B00EDDDBA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
