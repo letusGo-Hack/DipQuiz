@@ -14,9 +14,7 @@ struct ManagingView: View {
     @State private var selectedQuestionType: QuestionType = .TYPE_SELECT
     private let segmentItems: [String] = QuestionType.allCases.map { $0.stringValue }
     
-    @State private var selectedItems: [[String]] = [
-        stride(from: 0, to: 4, by: 1).map { String($0) },
-        stride(from: 10, to: 16, by: 1).map { String($0) },
+    @State private var selectedItems: [[CodableQuestionModel]] = [
         ["""
         WWDC 2023에서 Swift 새롭게 나온 기능에 대한 설명입니다. 소스 코드를 컴파일할 때 변환하므로 반복적인 코드를 직접 작성하지 않도록 만들어 주는 기능은 무엇일까요?
         
@@ -108,7 +106,34 @@ struct ManagingView: View {
         d) &
         e) #
         """
-        ]
+        ].map {
+            .init(
+                index: 0,
+                question_id: UUID().uuidString,
+                question: $0.components(separatedBy: "?")[0],
+                question_choices: $0.components(separatedBy: "?").last?.trimmingCharacters(in: .newlines) ?? "",
+                answer: "\(([1,2,3,4].randomElement() ?? 5))",
+                response: true,
+                question_type: 0
+            )
+        },
+        stride(from: 0, to: 4, by: 1).map {
+            print($0)
+            return .init(
+                index: 0,
+                question_id: UUID().uuidString,
+                question: "문제",
+                question_choices: """
+                1. 보기1
+                2. 보기2
+                3. 보기3
+                4. 보기4
+                """,
+                answer: "\(([1,2,3,4].randomElement() ?? 5))",
+                response: true,
+                question_type: 0
+            )
+        }
     ]
     
     var body: some View {
@@ -119,7 +144,7 @@ struct ManagingView: View {
                     selection: $selectedSegment,
                     label: Text("Segmented Control")
                 ) {
-                    ForEach(0..<3) { index in
+                    ForEach(0..<QuestionType.allCases.count) { index in
                         Text(segmentItems[index])
                     }
                 }
@@ -140,8 +165,9 @@ struct ManagingView: View {
                     id: \.self
                 ) { item in
                     QuizCardView(
-                        question: "\(item)",
-                        answer: "이제 인수 길이에 대한 추상화를 지원합니다."
+                        question: "\(item.question)",
+                        questionChoices: "\(item.question_choices)",
+                        answer: "\(item.answer)"
                     )
                 }
             }
