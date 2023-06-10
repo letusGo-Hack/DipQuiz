@@ -42,3 +42,9 @@ public struct Command: Identifiable, Equatable, Codable {
     return displayName == UIDevice.current.name
   }
 }
+
+public struct HostItem: Identifiable, Equatable, Codable {
+    public var id = UUID()
+    public var time = Date()
+    public var question_id: String
+}

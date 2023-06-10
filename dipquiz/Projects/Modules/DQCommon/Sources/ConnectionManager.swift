@@ -29,6 +29,12 @@ public class ConnectionManager: NSObject, ObservableObject {
         myPeerId = MCPeerID(displayName: name)
     }
     
+    //클라이언트 -> 호스트 처음 초기화전송
+    public func sendInit(questID: String){
+        send(_question_id: questID, _question: "", _answer: "", _value: "", _type: .INT)
+    }
+    
+    //host -> 클라이언트에게 문제를 한개씩 보냄(10)
     public func send(_question_id: String,
                      _question: String,
                      _answer: String,

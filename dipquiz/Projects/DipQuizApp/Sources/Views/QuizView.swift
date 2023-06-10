@@ -25,7 +25,7 @@ struct QuizView: View {
                 .padding()
             
             ScrollView {
-                kVStack(spacing: 16) {
+                VStack(spacing: 16) {
                     ForEach(answers, id: \.self) { answer in
                         QuizAnswerView(answer: answer)
                     }
