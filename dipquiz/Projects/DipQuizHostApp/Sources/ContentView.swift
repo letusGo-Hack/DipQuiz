@@ -17,6 +17,9 @@ struct ContentView: View {
         NavigationStack {
             NavigationLink {
                 ManagingView()
+                    .modelContainer(for: [
+                        QuestionModel.self
+                    ])
             } label: {
                 Label("관리", systemImage: "square.stack.3d.up.fill")
                     .font(.system(size: 30, weight: .medium))
