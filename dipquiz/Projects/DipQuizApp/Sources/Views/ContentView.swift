@@ -6,12 +6,33 @@
 //
 
 import SwiftUI
+import DQCommon
 
 struct ContentView: View {
     @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
-
+    @StateObject var appState = AppState()
+    
     var body: some View {
-        HomeView()
+        NavigationView {
+            Group {
+                switch (appState.switchView) {
+                case .home:
+                    HomeView()
+                        .environmentObject(appState)
+                    
+                case let .pending(manager):
+                    PendingView(connectionManager: manager)
+                        .environmentObject(appState)
+                    
+                case .quiz:
+                    QuizView()
+                        .environmentObject(appState)
+                case .result:
+                    QuizView()
+                        .environmentObject(appState)
+                }
+            }
+        }
         .task {
             try? await Task.sleep(for: Duration.seconds(1))
             self.launchScreenState.dismiss()

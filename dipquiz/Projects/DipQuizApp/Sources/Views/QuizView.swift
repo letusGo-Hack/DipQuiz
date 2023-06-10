@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct QuizView: View {
+    @EnvironmentObject var appState: AppState
     @State private var question: String = "문제"
     @State private var answers: [String] = []
+    
     
     var body: some View {
         VStack {

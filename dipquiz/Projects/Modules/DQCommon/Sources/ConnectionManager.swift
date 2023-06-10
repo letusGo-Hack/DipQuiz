@@ -164,6 +164,12 @@ extension ConnectionManager: MCBrowserViewControllerDelegate {
 
   public func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
     session?.disconnect()
-    browserViewController.dismiss(animated: true)
+      
+      browserViewController.dismiss(animated: true) {
+          self.connectedToChat = true
+      }
+      DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+          self.messages.insert(.init(displayName: "", body: "", question_id: "", question: "", answer: "", value: "", type: .INT), at: 0)
+      }
   }
 }

@@ -9,6 +9,9 @@ import SwiftUI
 import DQCommon
 
 struct HomeView: View {
+    @EnvironmentObject var appState: AppState
+    @ObservedObject private var connectionManager = ConnectionManager.shared
+    
     var body: some View {
         VStack {
             Spacer()
@@ -16,10 +19,19 @@ struct HomeView: View {
                 .frame(height: 64)
                 .padding(.horizontal, 40)
             Spacer()
+            NavigationLink(
+                destination: PendingView(connectionManager: connectionManager),
+                isActive: $connectionManager.connectedToChat,
+                label: { EmptyView() }
+            )
+            .hidden()
         }.onAppear(){
-            ConnectionManager.shared.displayname("c1")//클라이언트 이름
+            connectionManager.displayname("c1")//클라이언트 이름
         }
         .background(Color.white)
+        .onChange(of: self.connectionManager.connectedToChat) { oldValue, newValue in
+            print("⌘")
+        }
     }
     
     private var joinButton: some View {
