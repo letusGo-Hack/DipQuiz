@@ -13,7 +13,7 @@ let infoPlist: [String: InfoPlist.Value] = [
 // MARK: - App
 let appTargets: [Target] = AppFactory(
     dependency: AppFactory.Dependency(
-        appDependencies: [],
+        appDependencies: [Dep.Project.Common],
         unitTestsDependencies: []
     )
 ).build(

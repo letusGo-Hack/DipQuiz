@@ -11,10 +11,7 @@ struct ContentView: View {
     @EnvironmentObject private var launchScreenState: LaunchScreenStateManager
 
     var body: some View {
-        VStack {
-            HomeView()
-        }
-        .padding()
+        HomeView()
         .task {
             try? await Task.sleep(for: Duration.seconds(1))
             self.launchScreenState.dismiss()

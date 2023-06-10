@@ -31,4 +31,5 @@ extension Dep.Project {
     public static let FoundationKit     = Dep.module(name: "FoundationKit")
     public static let PresentationKit   = Dep.module(name: "PresentationKit")
     public static let ThirdPartyManager = Dep.module(name: "ThirdPartyManager")
+    public static let Common            = Dep.module(name: "DQCommon")
 }

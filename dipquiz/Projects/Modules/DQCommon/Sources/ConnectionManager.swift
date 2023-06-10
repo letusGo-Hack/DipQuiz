@@ -1,33 +1,33 @@
 import Foundation
 import MultipeerConnectivity
 
-class ConnectionManager: NSObject, ObservableObject {
+public class ConnectionManager: NSObject, ObservableObject {
     
   private static let service = "jobmanager-chat"
     
-  @Published var messages: [Command] = []
-  @Published var peers: [MCPeerID] = []
-  @Published var connectedToChat = false
+    @Published public var messages: [Command] = []
+    @Published public var peers: [MCPeerID] = []
+    @Published public var connectedToChat = false
     
-    var myPeerId = MCPeerID(displayName: UIDevice.current.name)
+    public var myPeerId = MCPeerID(displayName: UIDevice.current.name)
   private var advertiserAssistant: MCNearbyServiceAdvertiser?
   private var session: MCSession?
   private var isHosting = false
     
     //싱클톡 추가.
-    static let shared = ConnectionManager()
+    public static let shared = ConnectionManager()
     private override init() {
         super.init()
     }
-    var sharedInstance: ConnectionManager {
+    public var sharedInstance: ConnectionManager {
         return ConnectionManager.shared
     }
     
-    func displayname(_ name: String){
+    public func displayname(_ name: String){
         myPeerId = MCPeerID(displayName: name)
     }
     
-  func send(_ message: String) {
+    public func send(_ message: String) {
     let chatMessage = Command(displayName: myPeerId.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
     messages.append(chatMessage)
     guard
@@ -43,7 +43,7 @@ class ConnectionManager: NSObject, ObservableObject {
     }
   }
 
-  func sendHistory(to peer: MCPeerID) {
+    public func sendHistory(to peer: MCPeerID) {
     let tempFile = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("messages.data")
     guard let historyData = try? JSONEncoder().encode(messages) else { return }
     try? historyData.write(to: tempFile)
@@ -54,7 +54,7 @@ class ConnectionManager: NSObject, ObservableObject {
     }
   }
 
-  func join() {
+    public func join() {
     peers.removeAll()
     messages.removeAll()
     session = MCSession(peer: myPeerId, securityIdentity: nil, encryptionPreference: .required)
@@ -69,7 +69,7 @@ class ConnectionManager: NSObject, ObservableObject {
     window.rootViewController?.present(mcBrowserViewController, animated: true)
   }
 
-  func host() {
+    public func host() {
     isHosting = true
     peers.removeAll()
     messages.removeAll()
@@ -84,7 +84,7 @@ class ConnectionManager: NSObject, ObservableObject {
     advertiserAssistant?.startAdvertisingPeer()
   }
 
-  func leaveChat() {
+    public func leaveChat() {
     isHosting = false
     connectedToChat = false
     advertiserAssistant?.stopAdvertisingPeer()
@@ -95,13 +95,13 @@ class ConnectionManager: NSObject, ObservableObject {
 }
 
 extension ConnectionManager: MCNearbyServiceAdvertiserDelegate {
-  func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+    public func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
     invitationHandler(true, session)
   }
 }
 
 extension ConnectionManager: MCSessionDelegate {
-  func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+    public func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
     guard let message = String(data: data, encoding: .utf8) else { return }
       let chatMessage = Command(displayName: peerID.displayName, body: message, question_id: "", question: "", answer: "", value: "", type: .NONE)
     DispatchQueue.main.async {
@@ -109,7 +109,7 @@ extension ConnectionManager: MCSessionDelegate {
     }
   }
 
-  func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+    public func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
     switch state {
     case .connected:
       if !peers.contains(peerID) {
@@ -136,13 +136,13 @@ extension ConnectionManager: MCSessionDelegate {
     }
   }
 
-  func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}
+    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}
 
-  func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+  public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
     print("Receiving chat history")
   }
 
-  func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
     guard
       let localURL = localURL,
       let data = try? Data(contentsOf: localURL),
@@ -156,13 +156,13 @@ extension ConnectionManager: MCSessionDelegate {
 }
 
 extension ConnectionManager: MCBrowserViewControllerDelegate {
-  func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+  public func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
     browserViewController.dismiss(animated: true) {
       self.connectedToChat = true
     }
   }
 
-  func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+  public func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
     session?.disconnect()
     browserViewController.dismiss(animated: true)
   }
